@@ -1,4 +1,6 @@
 import pandas
+#import plotly.express as px
+
 pandas.set_option('display.max_rows', None)
 data = pandas.read_csv("data.csv", low_memory=False)
 #print(list(data))
@@ -13,4 +15,4 @@ declicked = dedupe[dedupe.type.isin(clicktype)]
 final = declicked[~declicked['useragent'].isnull()]
 
 print(final)
-#print(list(data))
+final.to_csv("out.csv")
