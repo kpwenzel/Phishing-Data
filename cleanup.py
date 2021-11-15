@@ -1,7 +1,7 @@
 import pandas
 #import plotly.express as px
 
-pandas.set_option('display.max_rows', None)
+pandas.set_option('display.max_rows', None) # This might crash your computer if you don't have at least 4 gb of memory
 data = pandas.read_csv("data.csv", low_memory=False)
 #print(list(data))
 #gglclck = data[data["type"].str.contains("Google Click")]
@@ -13,6 +13,8 @@ declicked = dedupe[dedupe.type.isin(clicktype)]
 #final = declicked[~declicked.useragent.isin(uatype)]
 #final = declicked[declicked.useragent.str.startswith("Mozilla")]
 final = declicked[~declicked['useragent'].isnull()]
+
+serialclick
 
 print(final)
 print()
