@@ -14,9 +14,12 @@ declicked = dedupe[dedupe.type.isin(clicktype)]
 #final = declicked[declicked.useragent.str.startswith("Mozilla")]
 final = declicked[~declicked['useragent'].isnull()]
 
-serialclick
+#serialclick = declicked.drop_duplicates(keep='last', subset='email')
+serialclick = declicked.duplicated(keep='last', subset='email').sum()
+amount = declicked.shape[0]
+serialclickactual = amount - serialclick
 
-print(final)
+#print(final)
 print()
 #final.to_csv("out.csv")
 
@@ -61,3 +64,5 @@ print()
 clickrateperdunkin = len(finaldunkin) / totalpeople
 print(clickrateperdunkin * 100)
 print()
+
+print(serialclickactual)
