@@ -15,9 +15,9 @@ declicked = dedupe[dedupe.type.isin(clicktype)]
 final = declicked[~declicked['useragent'].isnull()]
 
 #serialclick = declicked.drop_duplicates(keep='last', subset='email')
-serialclick = declicked.duplicated(keep='last', subset='email').sum()
-amount = declicked.shape[0]
-serialclickactual = amount - serialclick
+#serialclick = declicked.duplicated(keep='last', subset='email').sum()
+#amount = declicked.shape[0]
+#serialclickactual = amount - serialclick
 
 #print(final)
 print()
@@ -65,4 +65,24 @@ clickrateperdunkin = len(finaldunkin) / totalpeople
 print(clickrateperdunkin * 100)
 print()
 
+serialclick = declicked.duplicated(keep='last', subset='email').sum()
+amount = declicked.shape[0]
+serialclickactual = amount - serialclick
+
 print(serialclickactual)
+
+skywardserialclick = finalskyward.duplicated(keep='last', subset='email').sum()
+amount = finalskyward.shape[0]
+skywardserialclickactual = amount - skywardserialclick
+
+print(skywardserialclickactual)
+
+dunkinserialclick = finaldunkin.duplicated(keep='last', subset='email').sum()
+amount = finaldunkin.shape[0]
+dunkinserialclickactual = amount - dunkinserialclick
+
+print(dunkinserialclickactual)
+
+print(skywardserialclickactual / 1743 * 100)
+
+print(dunkinserialclickactual / 1743 * 100)
